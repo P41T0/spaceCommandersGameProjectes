@@ -63,7 +63,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 
 
-            if (Input.GetKeyDown(KeyCode.Space) || Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("l2"))
+            if (Input.GetKeyDown(KeyCode.Space) || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("l2"))
             {
                 if (shootWaitTime < 0)
                 {

@@ -522,6 +522,10 @@ public class GameOverSCScript : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.DownArrow) || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Down"))
                 {
                     numLletres--;
+                    if (numLletres <= 0)
+                    {
+                        numLletres = lletres.Count - 1;
+                    }
                     if (numLettersSelected == 0)
                     {
                         lletra1 = lletres[numLletres].ToString();
