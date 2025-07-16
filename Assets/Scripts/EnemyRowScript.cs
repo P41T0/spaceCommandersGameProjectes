@@ -41,12 +41,6 @@ public class EnemyRowScript : MonoBehaviour
         rowNumber = setRowNumber;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
     //posicio a la que acceleren de cop
     public void RowAccSpeedPosReached()
     {
