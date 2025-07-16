@@ -19,8 +19,6 @@ public class Arcade : MonoBehaviour
     private readonly Dictionary<string, bool> keyStates = new();
     private readonly Dictionary<string, bool> keyDown = new();
     private readonly Dictionary<string, bool> keyUp = new();
-    private readonly Dictionary<string, byte> j1D = new() { { "Up", 0 }, { "Down", 0 }, { "Left", 0 }, { "Right", 0 } };
-    private readonly Dictionary<string, byte> j2D = new() { { "Up", 0 }, { "Down", 0 }, { "Left", 0 }, { "Right", 0 } };
     void Awake()
     {
         portsAvailable = SerialPort.GetPortNames();
