@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.InputSystem;
 
 public class GameOverSCScript : MonoBehaviour
 {
+    InputAction navigateAction;
+    InputAction clickAction;
     // Start is called before the first frame update
     [SerializeField] private TMP_Text PlayerScoreText;
     [SerializeField] private TMP_Text bestPlayerText;
@@ -58,6 +61,8 @@ public class GameOverSCScript : MonoBehaviour
 
     void Start()
     {
+        navigateAction = InputSystem.actions.FindAction("Navigate");
+        clickAction = InputSystem.actions.FindAction("Click");
         optionChanged = true;
         unselected = new Color(0.5f, 0.5f, 0.5f);
         numBoto = 0;
@@ -257,7 +262,7 @@ public class GameOverSCScript : MonoBehaviour
                 }
 
             }
-            if (Input.GetKeyDown(KeyCode.RightArrow) || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Right"))
+            if ((navigateAction.ReadValue<Vector2>().x > 0 && navigateAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Right"))
             {
 
                 numBoto++;
@@ -271,7 +276,7 @@ public class GameOverSCScript : MonoBehaviour
                     numBoto = 0;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.LeftArrow) || Arcade.ac.ButtonDown("rb") || Arcade.ac.ButtonDown("j1_Left"))
+            if ((navigateAction.ReadValue<Vector2>().x < 0 && navigateAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("rb") || Arcade.ac.ButtonDown("j1_Left"))
             {
                 numBoto--;
                 if (timerBotons > 0.1f)
@@ -284,7 +289,7 @@ public class GameOverSCScript : MonoBehaviour
                     numBoto = numBotons - 1;
                 }
             }
-            if (Input.GetKeyDown(KeyCode.Return) || Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("select"))
+            if ((clickAction.ReadValue<float>() > 0 && clickAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("select"))
             {
                 if (numBoto == 0)
                 {
@@ -486,7 +491,7 @@ public class GameOverSCScript : MonoBehaviour
                         }
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.UpArrow) || Arcade.ac.ButtonDown("rb") || Arcade.ac.ButtonDown("j1_Up"))
+                if (navigateAction.ReadValue<Vector2>().y > 0 && navigateAction.WasPressedThisFrame())
                 {
                     numLletres++;
                     if (numLletres >= lletres.Count)
@@ -519,7 +524,7 @@ public class GameOverSCScript : MonoBehaviour
                     }
                     playerName = lletra1 + lletra2 + lletra3 + lletra4;
                 }
-                else if (Input.GetKeyDown(KeyCode.DownArrow) || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Down"))
+                else if (navigateAction.ReadValue<Vector2>().y < 0 && navigateAction.WasPressedThisFrame())
                 {
                     numLletres--;
                     if (numLletres <= 0)
@@ -552,7 +557,7 @@ public class GameOverSCScript : MonoBehaviour
                     }
                     playerName = lletra1 + lletra2 + lletra3 + lletra4;
                 }
-                else if (Input.GetKeyDown(KeyCode.RightArrow) || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("j1_Right") || Arcade.ac.ButtonDown("select"))
+                else if (navigateAction.ReadValue<Vector2>().x > 0 && navigateAction.WasPressedThisFrame())
                 {
                     optionChanged = true;
                     numLettersSelected++;
@@ -600,7 +605,7 @@ public class GameOverSCScript : MonoBehaviour
                         }
                     }
                 }
-                else if (Input.GetKeyDown(KeyCode.LeftArrow) || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Left"))
+                else if (navigateAction.ReadValue<Vector2>().x < 0 && navigateAction.WasPressedThisFrame())
                 {
 
                     if (numLettersSelected > 0)

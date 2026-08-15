@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(AudioSource))]
 public class PlayerControllerScript : MonoBehaviour
 {
+    InputAction moveAction;
+    InputAction shootAction;
     private float move;
     private AudioSource playerAudioSource;
     [SerializeField] private AudioClip playerShootClip;
@@ -22,6 +26,8 @@ public class PlayerControllerScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        moveAction = InputSystem.actions.FindAction("Move");
+        shootAction = InputSystem.actions.FindAction("Shoot");
         playerAudioSource = GetComponent<AudioSource>();
         move = 0;
         shootWaitTime = 5.0f;
@@ -43,36 +49,44 @@ public class PlayerControllerScript : MonoBehaviour
         }
         if (alive)
         {
-            move = 0;
-            if ((Input.GetKey(KeyCode.D)) || (Input.GetKey(KeyCode.RightArrow)) ||  Arcade.ac.Button("j1_Right"))
+            move = moveAction.ReadValue<Vector2>().x;
+            if (Arcade.ac.Button("j1_Right"))
             {
                 move += 1;
+                if(move > 1)
+                {
+                    move = 1;
+                }
             }
-            if ((Input.GetKey(KeyCode.A)) || (Input.GetKey(KeyCode.LeftArrow)) || Arcade.ac.Button("j1_Left"))
+            if (Arcade.ac.Button("j1_Left"))
             {
                 move -= 1;
+                if (move < -1)
+                {
+                    move = -1;
+                }
             }
             if (move != 0)
             {
-                if (-4.75f < gameObject.transform.position.x + move * speed * Time.deltaTime && gameObject.transform.position.x + move * speed * Time.deltaTime < 4.75f)
+                float newX = gameObject.transform.position.x + move * speed * Time.deltaTime;
+                if (-4.75f < newX && newX < 4.75f)
                 {
-                    gameObject.transform.position = new Vector2(gameObject.transform.position.x + move * speed * Time.deltaTime, gameObject.transform.position.y);
+                    gameObject.transform.position = new Vector2(newX, gameObject.transform.position.y);
                 }
             }
 
 
 
 
-            if (Input.GetKeyDown(KeyCode.Space) || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("l2"))
+            if ((shootAction.ReadValue<float>() > 0 && shootAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("l2"))
             {
                 if (shootWaitTime < 0)
                 {
-
-                    if (blackBackground == false)
+                    if (!blackBackground)
                     {
                         Instantiate(orangeBullet, gameObject.transform.position, Quaternion.identity);
                     }
-                    else if (blackBackground == true)
+                    else
                     {
                         Instantiate(blackBullet, gameObject.transform.position, Quaternion.identity);
                     }
@@ -82,7 +96,6 @@ public class PlayerControllerScript : MonoBehaviour
                     }
                     shootWaitTime = 0.4f;
                 }
-
             }
 
         }
