@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq;
 
 public class SceneControllerScript : MonoBehaviour
 {
+    private static readonly int MoveLeftHash = Animator.StringToHash("MoveLeft");
     private int numHitsToGoDown;
     [SerializeField] private GameObject[] enemyRows;
     [SerializeField] private GameObject enemyRowContainer;
@@ -558,11 +557,11 @@ public class SceneControllerScript : MonoBehaviour
             livesObject[lives].GetComponent<Animator>().enabled = true;
             if (enemyRowContainer.transform.position.x < 0)
             {
-                livesObject[lives].GetComponent<Animator>().SetBool("MoveLeft", false);
+                livesObject[lives].GetComponent<Animator>().SetBool(MoveLeftHash, false);
             }
             else
             {
-                livesObject[lives].GetComponent<Animator>().SetBool("MoveLeft", true);
+                livesObject[lives].GetComponent<Animator>().SetBool(MoveLeftHash, true);
             }
 
         }

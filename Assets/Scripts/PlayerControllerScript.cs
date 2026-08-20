@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(AudioSource))]
 public class PlayerControllerScript : MonoBehaviour
 {
+    private static readonly int DarkBgHash = Animator.StringToHash("DarkBg");
     InputAction moveAction;
     InputAction shootAction;
     private float move;
@@ -110,11 +109,11 @@ public class PlayerControllerScript : MonoBehaviour
         gameObject.SetActive(true);
         if (blackBackground == true)
         {
-            playerAnimator.SetBool("DarkBg", true);
+            playerAnimator.SetBool(DarkBgHash, true);
         }
         else if (blackBackground == false)
         {
-            playerAnimator.SetBool("DarkBg", false);
+            playerAnimator.SetBool(DarkBgHash, false);
         }
         alive = true;
     }
@@ -155,12 +154,12 @@ public class PlayerControllerScript : MonoBehaviour
         if (blackBackground == true)
         {
             blackBackground = false;
-            playerAnimator.SetBool("DarkBg", false);
+            playerAnimator.SetBool(DarkBgHash, false);
         }
         else if (blackBackground == false)
         {
             blackBackground = true;
-            playerAnimator.SetBool("DarkBg", true);
+            playerAnimator.SetBool(DarkBgHash, true);
         }
     }
 }

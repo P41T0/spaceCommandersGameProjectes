@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class EnemyScript : MonoBehaviour
 {
+    private static readonly int DarkBgHash = Animator.StringToHash("DarkBg");
     private EnemyRowScript enemyRowScript;
     [SerializeField] private GameObject EnableShootUpperEnemy;
     [SerializeField] private GameObject EnemyOrangeBullet;
@@ -165,12 +165,12 @@ public class EnemyScript : MonoBehaviour
         if (blackBackground == true)
         {
             blackBackground = false;
-            animator.SetBool("DarkBg", false);
+            animator.SetBool(DarkBgHash, false);
         }
         else if (blackBackground == false)
         {
             blackBackground = true;
-            animator.SetBool("DarkBg", true);
+            animator.SetBool(DarkBgHash, true);
         }
         animator.speed = 0.3f;
     }

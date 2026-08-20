@@ -46,8 +46,7 @@ public class PostProcessControl : MonoBehaviour
         var cam = Camera.main;
         if (cam == null) { Debug.LogWarning("Main camera not found."); return; }
 
-        var additional = cam.GetComponent<UniversalAdditionalCameraData>();
-        if (additional == null) additional = cam.gameObject.AddComponent<UniversalAdditionalCameraData>();
+        if (!cam.TryGetComponent<UniversalAdditionalCameraData>(out var additional)) additional = cam.gameObject.AddComponent<UniversalAdditionalCameraData>();
 
         additional.renderPostProcessing = true;
         additional.volumeLayerMask = 1 << 1;

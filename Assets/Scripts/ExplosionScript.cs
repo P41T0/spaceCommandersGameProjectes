@@ -1,7 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+[RequireComponent(typeof(SpriteRenderer))]
 
+[RequireComponent(typeof(AudioSource))]
 public class ExplosionScript : MonoBehaviour
 {
     private SpriteRenderer explosionRenderer;
