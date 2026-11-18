@@ -84,7 +84,7 @@ public class IntroSCScript : MonoBehaviour
             PlayerPrefs.SetInt("Postprocessing", 1);
             PlayerPrefs.SetFloat("PostProcessingPerc", 0.4f);
         }
-        portText = Arcade.ac.GetPort();
+        portText = "port 0"; //Arcade.ac.GetPort();
         portDisplayText.text = portText;
     }
 
@@ -181,7 +181,7 @@ public class IntroSCScript : MonoBehaviour
             }
         }
 
-        if ((navigateAction.ReadValue<Vector2>().y < 0 && navigateAction.WasPressedThisFrame()) ||  Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Down")) 
+        if ((navigateAction.ReadValue<Vector2>().y < 0 && navigateAction.WasPressedThisFrame()) /*||  Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Down")*/) 
         {
             buttonSelected++;
             if (timer > 0.1f)
@@ -194,7 +194,7 @@ public class IntroSCScript : MonoBehaviour
                 buttonSelected = 0;
             }
         }
-        if ((navigateAction.ReadValue<Vector2>().y > 0 && navigateAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("j1_Up"))
+        if ((navigateAction.ReadValue<Vector2>().y > 0 && navigateAction.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("j1_Up")*/)
         {
             buttonSelected--;
             if (timer > 0.1f)
@@ -207,7 +207,7 @@ public class IntroSCScript : MonoBehaviour
                 buttonSelected = numButtons - 1;
             }
         }
-        if ((clickAction.ReadValue<float>() > 0 && clickAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("select"))
+        if ((clickAction.ReadValue<float>() > 0 && clickAction.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("select")*/)
         {
             if (buttonSelected == 0)
             {
@@ -222,10 +222,10 @@ public class IntroSCScript : MonoBehaviour
                 ButtonQuitPressed();
             }
         }
-        if (Arcade.ac.ButtonDown("start"))
+        /*if (Arcade.ac.ButtonDown("start"))
         {
             ButtonStartPressed();
-        }
+        }*/
 
     }
 

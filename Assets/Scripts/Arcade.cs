@@ -1,13 +1,13 @@
-﻿// Buscar o Ctrl + L -> System.io.ports -> INSTALAR Y REINICIAR VISUAL STUDIO COMUNITY
+﻿/*/ Buscar o Ctrl + L -> System.io.ports -> INSTALAR Y REINICIAR VISUAL STUDIO COMUNITY
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Ports; //Obtenir el paquet Herramientas -> Administrador de paquetes NuGet -> Administrar paquetes de NuGet para la solucion
-using System.Linq;
+using System.Linq;*/
 using UnityEngine;
 
 public class Arcade : MonoBehaviour
-{
+{/*
     public static Arcade ac;
     private String portText;
     private String[] portsAvailable;
@@ -233,5 +233,5 @@ public class Arcade : MonoBehaviour
                 serialPort.Close();
             }
         }
-    }
+    }*/
 }

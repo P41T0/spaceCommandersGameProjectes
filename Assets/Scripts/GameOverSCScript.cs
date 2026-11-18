@@ -261,7 +261,7 @@ public class GameOverSCScript : MonoBehaviour
                 }
 
             }
-            if ((navigateAction.ReadValue<Vector2>().x > 0 && navigateAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Right"))
+            if ((navigateAction.ReadValue<Vector2>().x > 0 && navigateAction.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Right")*/)
             {
 
                 numBoto++;
@@ -275,7 +275,7 @@ public class GameOverSCScript : MonoBehaviour
                     numBoto = 0;
                 }
             }
-            if ((navigateAction.ReadValue<Vector2>().x < 0 && navigateAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("rb") || Arcade.ac.ButtonDown("j1_Left"))
+            if ((navigateAction.ReadValue<Vector2>().x < 0 && navigateAction.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("rb") || Arcade.ac.ButtonDown("j1_Left")*/)
             {
                 numBoto--;
                 if (timerBotons > 0.1f)
@@ -288,7 +288,7 @@ public class GameOverSCScript : MonoBehaviour
                     numBoto = numBotons - 1;
                 }
             }
-            if ((clickAction.ReadValue<float>() > 0 && clickAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("select"))
+            if ((clickAction.ReadValue<float>() > 0 && clickAction.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("select")*/)
             {
                 if (numBoto == 0)
                 {

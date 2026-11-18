@@ -49,7 +49,7 @@ public class PlayerControllerScript : MonoBehaviour
         if (alive)
         {
             move = moveAction.ReadValue<Vector2>().x;
-            if (Arcade.ac.Button("j1_Right"))
+            /*if (Arcade.ac.Button("j1_Right"))
             {
                 move += 1;
                 if(move > 1)
@@ -64,7 +64,7 @@ public class PlayerControllerScript : MonoBehaviour
                 {
                     move = -1;
                 }
-            }
+            }*/
             if (move != 0)
             {
                 float newX = gameObject.transform.position.x + move * speed * Time.deltaTime;
@@ -77,7 +77,7 @@ public class PlayerControllerScript : MonoBehaviour
 
 
 
-            if ((shootAction.ReadValue<float>() > 0 && shootAction.WasPressedThisFrame()) || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("l2"))
+            if ((shootAction.ReadValue<float>() > 0 && shootAction.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("l2")*/)
             {
                 if (shootWaitTime < 0)
                 {

@@ -168,7 +168,7 @@ public class SCSettings : MonoBehaviour
                 postProcessingPercText.color = unselected;
             }
         }
-        if ((navigate.ReadValue<Vector2>().y > 0 && navigate.WasPressedThisFrame()) || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("j1_Up"))
+        if ((navigate.ReadValue<Vector2>().y > 0 && navigate.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("la") || Arcade.ac.ButtonDown("j1_Up")*/)
         {
             optionSelected--;
             optionChanged = true;
@@ -177,7 +177,7 @@ public class SCSettings : MonoBehaviour
                 optionSelected = numOptions - 1;
             }
         }
-        if ((navigate.ReadValue<Vector2>().y < 0 && navigate.WasPressedThisFrame()) || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Down"))
+        if ((navigate.ReadValue<Vector2>().y < 0 && navigate.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Down")*/)
         {
             optionSelected++;
             optionChanged = true;
@@ -186,7 +186,7 @@ public class SCSettings : MonoBehaviour
                 optionSelected = 0;
             }
         }
-        if ((navigate.ReadValue<Vector2>().x > 0 && navigate.WasPressedThisFrame()) || Arcade.ac.ButtonDown("rb") || Arcade.ac.ButtonDown("j1_Right"))
+        if ((navigate.ReadValue<Vector2>().x > 0 && navigate.WasPressedThisFrame())/* || Arcade.ac.ButtonDown("rb") || Arcade.ac.ButtonDown("j1_Right")*/)
         {
             if (optionSelected == 0)
             {
@@ -277,7 +277,7 @@ public class SCSettings : MonoBehaviour
             }
 
         }
-        if ((navigate.ReadValue<Vector2>().x < 0 && navigate.WasPressedThisFrame()) ||Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Left"))
+        if ((navigate.ReadValue<Vector2>().x < 0 && navigate.WasPressedThisFrame())/* ||Arcade.ac.ButtonDown("lb") || Arcade.ac.ButtonDown("j1_Left")*/)
         {
 
             if (optionSelected == 0)
@@ -374,7 +374,7 @@ public class SCSettings : MonoBehaviour
 
             }
         }
-        if ((click.ReadValue<float>() > 0 && click.WasPressedThisFrame()) || Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("select"))
+        if ((click.ReadValue<float>() > 0 && click.WasPressedThisFrame()) /*|| Arcade.ac.ButtonDown("l1") || Arcade.ac.ButtonDown("select")*/)
         {
             ReturnToIntro();
         }
